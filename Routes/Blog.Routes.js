@@ -56,8 +56,8 @@ blogRouter.get("/blogs", async (req, res) => {
   try {
     const searchQuery = req.query.title;
 
-    let Data = await doctorModel.find({ title: searchQuery });
-    res.json(Data);
+    let Data = await BlogModal.find({ title: searchQuery });
+    res.status(200).send({ msg: "data added successfull", data: Data });
   } catch (error) {
     res.status(400).json({ message: "something goes wrong" });
   }
