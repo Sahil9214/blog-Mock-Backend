@@ -35,9 +35,9 @@ blogRouter.patch("/blogs/:id", async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "Blog updated successfully", data: updatedData });
+      .send({ message: "Blog updated successfully", data: updatedData });
   } catch (error) {
-    res.status(400).json({ error: "Internal server error" });
+    res.status(400).send({ error: "Internal server error" });
   }
 });
 //Delete Request
@@ -46,9 +46,9 @@ blogRouter.delete("/blogs/:id", async (req, res) => {
   try {
     await BlogModal.findByIdAndDelete(id);
 
-    res.status(200).json({ message: "Blog deleted successfully" });
+    res.status(200).send({ message: "Blog deleted successfully" });
   } catch (error) {
-    res.status(400).json({ error: "Internal server error" });
+    res.status(400).send({ error: "Internal server error" });
   }
 });
 //search
@@ -59,7 +59,7 @@ blogRouter.get("/blogs", async (req, res) => {
     let Data = await BlogModal.find({ title: searchQuery });
     res.status(200).send({ msg: "data added successfull", data: Data });
   } catch (error) {
-    res.status(400).json({ message: "something goes wrong" });
+    res.status(400).send({ message: "something goes wrong" });
   }
 });
 module.exports = { blogRouter };
