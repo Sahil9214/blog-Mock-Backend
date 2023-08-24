@@ -4,7 +4,7 @@ const { UserModal } = require("../Modal/User.Modal");
 const bycrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 
-userRouter.post("/signin", async (req, res) => {
+userRouter.post("/register", async (req, res) => {
   const { Username, Avatar, Email, Password } = req.body;
   try {
     if (
